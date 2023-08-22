@@ -1,0 +1,21 @@
+.cardHeader{
+
+    height: 37px;
+    font-size: 20px;
+}
+.mb-2{
+    display: flex;
+    gap: 14px;
+ 
+}
+.cardBody{
+    width: 270px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 7.5px;
+    .cardTxt{
+        font-size: 20px;
+    }
+}
