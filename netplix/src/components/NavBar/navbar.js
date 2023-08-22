@@ -7,7 +7,7 @@ export default function ColorSchemesExample() {
     <>
       <Navbar bg="dark" data-bs-theme="dark" className='navBar'>
         <Container>
-          <Navbar.Brand path="/" >Navbar</Navbar.Brand>
+          <Navbar.Brand path="/" >NetPlix</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link path="/">Home</Nav.Link>
             <Nav.Link path="/fav">Trending</Nav.Link>

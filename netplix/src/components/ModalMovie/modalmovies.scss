@@ -1,5 +1,19 @@
 .modal-body{
-    p{
+    article{
         font-size: 20px;
     }
+
+}
+.rates{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+.rates p{
+    font-size:17px;
+}
+.buttons{
+    display:flex;
+  justify-content: center!important ;
+
 }

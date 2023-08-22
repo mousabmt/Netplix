@@ -1,11 +1,12 @@
 .cardHeader{
 
-    height: 37px;
-    font-size: 20px;
+    height: 39px;
+    font-size: 18px;
 }
 .mb-2{
     display: flex;
     gap: 14px;
+    width: 360px!important;
  
 }
 .cardBody{
@@ -16,6 +17,6 @@
     justify-content: space-between;
     margin-left: 7.5px;
     .cardTxt{
-        font-size: 20px;
+        font-size: 17px;
     }
 }

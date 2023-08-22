@@ -33,14 +33,24 @@ export default function Home() {
     fetchData();
   }, []);
   return (
-      <div>
-<CardGroup> 
+    <div>
+      <CardGroup>
         {Movies.length &&
           Movies.map((movie) => (
-            <MovieCard handleShow={handleShow} movieData={movie} setMovie={setOneMovie}/>
+            <MovieCard
+              handleShow={handleShow}
+              movieData={movie}
+              setMovie={setOneMovie}
+            />
           ))}
-        </CardGroup>
-        <MovieShowDetails show={show} handleClose={handleClose} Movie={OneMovie}/>
-      </div>
+      </CardGroup>
+      {
+        <MovieShowDetails
+          show={show}
+          handleClose={handleClose}
+          Movie={OneMovie}
+        />
+      }
+    </div>
   );
 }
