@@ -1,22 +1,84 @@
-.cardHeader{
+// .cardHeader{
 
-    height: 39px;
-    font-size: 18px;
-}
-.mb-2{
-    display: flex;
-    gap: 14px;
-    width: 360px!important;
+//     height: 39px;
+//     font-size: 18px;
+// }
+// .mb-2{
+//     display: flex;
+//     gap: 14px;
+//     width: 360px!important;
+//     height: 360px!important;
+    
  
+// }
+// .cardBody{
+//     width: 95%;
+//     height: 230px;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     margin-left: 7.5px;
+//     .cardTxt{
+//         font-size: 17px;
+//     }
+//     img{
+//         width:;
+//     }
+// }
+
+
+img{
+    width:180px;
+    cursor: pointer;
+
 }
-.cardBody{
-    width: 270px;
-    height: 150px;
+.movieCards{
+    width: 18%;
+}
+.card{
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-left: 7.5px;
-    .cardTxt{
-        font-size: 17px;
-    }
+    justify-content: center;
+    padding: 10px;
+    width: 16rem;
+ 
+    background-color: rgb(0, 0, 0);
+    margin-top: 20px;
+    height: 370px !important;
 }
+.card-group{
+    margin-left: 0%!important;
+    width: 100%;
+    background-color: rgb(30, 29, 29);
+    display: flex !important;
+    flex-flow: row wrap !important;
+    flex-wrap: wrap !important;
+  
+    flex-direction: row-reverse !important;
+   
+
+}
+.card-image{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.button{
+    border: none;
+    background-color: rgb(0, 0, 0);
+    color:white;
+    
+}
+.Row{
+    padding: 10px ;
+     background-color: rgb(73, 69, 69);
+ }
+ .Id{
+    font-size: 18px;
+    display: flex;
+  align-items: flex-start;
+  height: 40px;
+ }
+ span {
+    width: 100%;
+ }

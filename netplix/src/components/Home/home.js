@@ -8,6 +8,8 @@ import axios from "axios";
 import { useEffect } from "react";
 import { CardGroup } from "react-bootstrap";
 import "./home.scss";
+import CarouselMovies from "../Carousel/carousel";
+import ColorSchemesExample from "../NavBar/navbar";
 export default function Home() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -20,7 +22,7 @@ export default function Home() {
 
   const [Movies, setMovies] = useState([]);
   const [OneMovie, setOneMovie] = useState([]);
-
+  // this is the home page cards listing
   const fetchData = async () => {
     try {
       const res = await axios.get(`${process.env.REACT_APP_HOST}/`);
@@ -34,6 +36,10 @@ export default function Home() {
   }, []);
   return (
     <div>
+      <ColorSchemesExample />
+
+      <CarouselMovies/>
+<h1 className="sign"><i class="fa-solid fa-arrow-trend-up fa-2xl"></i>Most Popular</h1>
       <CardGroup>
         {Movies.length &&
           Movies.map((movie) => (

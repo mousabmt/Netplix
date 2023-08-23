@@ -1,16 +1,15 @@
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import "./movie.scss";
-import { CardImg } from "react-bootstrap";
-export default function MovieCard({ handleShow, movieData, setMovie }) {
+export default function MovieFavCard({ handleShow, movieData, setMovie}) {
   const handleClick = () => {
     setMovie(movieData);
     handleShow();
   };
 
   return (
-    <div className="movieCards" key={movieData.ID}>
-      <>
+    <div className="movieCards" key={movieData.movie_id}>
+  <>
         {/* {["Light"].map((variant) => (
           <Card
             bg={variant.toLowerCase()}
@@ -42,7 +41,7 @@ export default function MovieCard({ handleShow, movieData, setMovie }) {
 
           <thead>
             <tr>
-              <td className="Id">ID: {movieData.ID}</td>
+              <td className="Id">ID: {movieData.movie_id}</td>
             </tr>
       
           </thead>
@@ -51,7 +50,7 @@ export default function MovieCard({ handleShow, movieData, setMovie }) {
             <a onClick={handleClick}>
 
             <img
-              src={`https://image.tmdb.org/t/p/w500/${movieData.Poster_Path}`}
+              src={`https://image.tmdb.org/t/p/w500/${movieData.movie_poster_path}`}
               />
               </a>
           </tbody>
