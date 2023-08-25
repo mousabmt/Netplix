@@ -10,6 +10,7 @@ import { CardGroup } from "react-bootstrap";
 import "./home.scss";
 import CarouselMovies from "../Carousel/carousel";
 import ColorSchemesExample from "../NavBar/navbar";
+
 export default function Home() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -39,7 +40,7 @@ export default function Home() {
       <ColorSchemesExample />
 
       <CarouselMovies/>
-<h1 className="sign"><i class="fa-solid fa-arrow-trend-up fa-2xl"></i>Most Popular</h1>
+<h1 className="sign">Most Popular</h1>
       <CardGroup>
         {Movies.length &&
           Movies.map((movie) => (
