@@ -56,7 +56,7 @@ function MovieShowFavDetails({ show, handleClose, Movie }) {
 
           <p>Votes : {Movie.movie_vote_count || "UnOfficial Yet"}</p>
           <p>Popularity : {Movie.movie_popularity || "UnOfficial Yet"}</p>
-          <Modal.Footer>Your Commen : {Movie.comment}</Modal.Footer>
+          <Modal.Footer>Your Comment : {Movie.comment}</Modal.Footer>
         </Modal.Footer>
         <Modal.Footer className="buttons">
           <Button variant="danger" onClick={favoriteDeletion}>

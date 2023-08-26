@@ -1,9 +1,10 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import ".//modalmovies.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRef } from "react";
+
 function MovieShowDetails({ show, handleClose, Movie }) {
   const [comment, setComment] = useState("");
   const handleCommentChange = (event) => {
@@ -20,32 +21,60 @@ function MovieShowDetails({ show, handleClose, Movie }) {
     vote_average: Movie.vote_average || "No overview available Yet",
     comment: comment || "No comment",
   };
-  console.log(obj);
+  console.log(Movie.ID);
+
+  // async function checkFav() {
+  //   const checking = await axios.get(
+  //     `${process.env.REACT_APP_HOST}/getmovies/${Movie.ID}`
+  //   );
+  // }
   // console.log("THE MOVIE",Movie);
   const [variant, setVariant] = useState("primary");
   const [FavTxt, setFavTxt] = useState("Add To Favorite");
+  // const [Check, setCheck] = useState(true);
+
+  // async function checkFav(req, res) {
+
+  // }
+  // useEffect(() => {
+  //   checkFav();
+  // }, []);
   function setTimer() {
     setVariant("primary");
     setFavTxt("Add To Favorite");
   }
 
-  const addToFav = () => {
-    console.log(obj);
-    // const check= axios.get(`${process.env.REACT_APP_HOST}/getmovies`).then(data.rows.movie_id).then(data)
-    axios
-      .post(`${process.env.REACT_APP_HOST}/addMovie`, obj)
-      .then((data) => {})
-      .catch((err) => console.log(err));
-    setVariant("success");
-    setFavTxt("Successfully Added To Favorite");
+  const addToFav = async () => {
+    const checking = await axios.get(
+      `${process.env.REACT_APP_HOST}/getmovies/${Movie.ID}`
+    );
+    console.log(checking,'sdfdsfds');
+    if (checking.data.length) {
+      setVariant("danger");
+      setFavTxt("The Movie Is Already In Favorite!");
 
-    setTimeout(setTimer, 900);
-    setTimeout(handleClose, 800);
+      setTimeout(setTimer, 900);
+      setTimeout(handleClose, 1000);
+      return 0;
+    } else {
+      axios
+        .post(`${process.env.REACT_APP_HOST}/addMovie`, obj)
+        .then((data) => {})
+        .catch((err) => console.log(err));
+      setVariant("success");
+      setFavTxt("Successfully Added To Favorite");
+
+      setTimeout(setTimer, 900);
+      setTimeout(closingStuff, 800);
+    }
   };
-
+function closingStuff(){
+  setComment('')
+  handleClose()
+}
   return (
     <div>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={closingStuff}>
         <Modal.Header closeButton>
           <Modal.Title>{Movie.Title}</Modal.Title>
         </Modal.Header>
@@ -83,9 +112,11 @@ function MovieShowDetails({ show, handleClose, Movie }) {
               <Button variant="secondary" onClick={handleClose}>
                 Exit
               </Button>
-              <Button variant={variant} onClick={addToFav} type="button">
-                {FavTxt}
-              </Button>
+              { 
+                <Button variant={variant} onClick={addToFav} type="button">
+                  {FavTxt}
+                </Button>
+              }
             </Modal.Footer>
           </form>
         </div>

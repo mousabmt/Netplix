@@ -52,6 +52,7 @@ export default function Home() {
           ))}
       </CardGroup>
       {
+      setOneMovie &&
         <MovieShowDetails
           show={show}
           handleClose={handleClose}

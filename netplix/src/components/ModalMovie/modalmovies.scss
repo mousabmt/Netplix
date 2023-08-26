@@ -56,7 +56,7 @@ display: flex;
     border-color: #007bff;
   }
   
-  .input-field:focus + .input-label {
+  .input-field:not(:empty) + .input-label {
     top: 0;
     font-size: 19px; /* Adjust font size for smaller screens */
     color: #007bff;
