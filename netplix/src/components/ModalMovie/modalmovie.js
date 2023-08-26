@@ -68,6 +68,8 @@ function MovieShowDetails({ show, handleClose, Movie }) {
       setTimeout(closingStuff, 800);
     }
   };
+  // to close after entering the comment
+
 function closingStuff(){
   setComment('')
   handleClose()
