@@ -11,14 +11,11 @@ img{
     cursor: pointer;
 
 }
-.movieCards{
-    width: 18%;
-    
-}
+
 .movie-card {
     position: relative;
     cursor: pointer;
-  
+  box-shadow: none;
     .image-container {
       position: relative;
       overflow: hidden;
@@ -133,4 +130,6 @@ img{
     width: auto;
   }
 
- 
+ .movie-card:hover{
+box-shadow:0 0 50px rgb(0, 0, 0);
+ }

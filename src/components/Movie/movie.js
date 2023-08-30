@@ -24,7 +24,7 @@ export default function MovieCard({ handleShow, movieData, setMovie }) {
                 src={`https://image.tmdb.org/t/p/w500/${movieData.Poster_Path}`}
               />
               <div className="overlay">
-                <p>Rate : {movieData.vote_average}</p>
+                <p>Rate : {Math.round(movieData.vote_average * 10) / 10}</p>
               </div>
             </a>
           </tbody>

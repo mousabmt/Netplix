@@ -41,6 +41,9 @@ export default function Home() {
 
       <CarouselMovies/>
 <h1 className="sign">Most Popular</h1>
+<div className="positions">
+
+
       <CardGroup>
         {Movies.length &&
           Movies.map((movie) => (
@@ -51,6 +54,8 @@ export default function Home() {
             />
           ))}
       </CardGroup>
+  
+</div>
       {
       setOneMovie &&
         <MovieShowDetails
