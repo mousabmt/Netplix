@@ -1,5 +1,5 @@
 import React from "react";
-import MovieShowDetails from "../ModalMovie/modalFavMovie";
+import MovieShowFavDetails from "../ModalMovie/modalFavMovie";
 import { useState } from "react";
 import MovieFavCard from "../Movie/movieFav";
 import { Row } from "react-bootstrap";
@@ -26,12 +26,17 @@ setMovies(res.data.movie)
       console.log(err);
     }
   };
+  const refereshPage=(id)=>{
+    console.log("done");
+  setMovies(removieMovie=> removieMovie.filter(item => item.id!==id))
+}
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [Movies]);
+
   return (
 
-    <div className="Row"> 
+    <div className="positions"> 
     <ColorSchemesExample/>
       <CardGroup>
         {Movies.length &&
@@ -40,14 +45,16 @@ setMovies(res.data.movie)
               handleShow={handleShow}
               movieData={movie}
               setMovie={setOneMovie}
+
             />
           ))}
       </CardGroup>
       {
-        <MovieShowDetails
+        <MovieShowFavDetails
           show={show}
           handleClose={handleClose}
           Movie={OneMovie}
+          refereshPage={refereshPage}
         />
       }
     </div>

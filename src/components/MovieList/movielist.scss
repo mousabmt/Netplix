@@ -5,7 +5,30 @@
  body{
     background-color: rgb(30, 29, 29);
  }
- .navBar
- {
-   
- }
+
+ div{
+   .flex{
+       display: flex;
+      
+   }
+
+    
+  
+} 
+.card-group{
+   display: flex ;
+  gap:30px ;
+margin-left: 16px ;   
+display: flex;
+flex-wrap: wrap;
+padding: 40px;
+padding-right: 50px;
+}
+.sign{
+margin-top: 10px;
+}
+h1{
+  
+   background-color: white;
+opacity: 0.6;
+}

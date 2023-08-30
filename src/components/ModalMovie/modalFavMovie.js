@@ -6,7 +6,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import MovieFavCard from "../Movie/movieFav";
 import { Form } from "react-bootstrap";
-function MovieShowFavDetails({ show, handleClose, Movie }) {
+function MovieShowFavDetails({ show, handleClose, Movie,refereshPage}) {
   // functions to change the button's Color&Text when pressed On
   const [variant, setVariant] = useState("success");
   const [FavTxt, setFavTxt] = useState("Add To Favorite");
@@ -43,7 +43,10 @@ function MovieShowFavDetails({ show, handleClose, Movie }) {
   const favoriteDeletion = () => {
     axios
       .delete(`${process.env.REACT_APP_HOST}/getmovies/${obj.movie_id}`, obj)
-      .then((data) => {})
+      .then((data) => {
+        console.log('id :',obj.movie_id , " Deleted  !");
+        refereshPage(obj.movie_id)
+      })
       .catch((err) => console.log(err));
 
     handleCloseFun();
@@ -53,6 +56,7 @@ function MovieShowFavDetails({ show, handleClose, Movie }) {
   };
   const handleCloseFun = () => {
     handleClose();
+    setComment('')
     setIsUpdate(true);
   };
 
@@ -89,6 +93,7 @@ function MovieShowFavDetails({ show, handleClose, Movie }) {
                 type="text"
                 id="commentInput"
                 className="input-field"
+                value={comment}
                 onChange={handleCommentChange}
               />
               <label htmlFor="commentInput" className="input-label">
