@@ -32,7 +32,7 @@ setMovies(res.data.movie)
 }
   useEffect(() => {
     fetchData();
-  }, [Movies]);
+  }, []);
 
   return (
 
