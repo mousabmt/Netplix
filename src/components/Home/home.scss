@@ -1,0 +1,22 @@
+div{
+    .flex{
+        display: flex;
+       
+    }
+
+
+   
+} 
+.card-group{
+display: flex;
+justify-content: center;
+gap: 20px;
+}
+.sign{
+    margin-top: 30px  !important;
+    background: white;
+    box-shadow: 4px -20px 20px 4px gray;
+}
+h1{
+    opacity: 0.8;
+}

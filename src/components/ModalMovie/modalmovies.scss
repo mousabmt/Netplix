@@ -1,0 +1,69 @@
+/* Styles for modal body */
+.modal-body {
+    article {
+      font-size: 18px;
+    }
+  }
+  
+  /* Styles for rates section */
+  .rates {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .rates p {
+    font-size: 16px;
+  }
+  
+  /* Styles for buttons */
+  .buttons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Styles for input fields with floating label effect */
+  .input-container {
+    position: relative;
+    margin: 15px; /* Adjust margin for smaller screens */
+height: 90px; 
+display: flex;
+
+}
+  
+  .input-field {
+    width: 100%;
+    padding: 8px; /* Adjust padding for smaller screens */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .input-label {
+    position: absolute;
+    top: 50%;
+    left: 8px; /* Adjust left spacing for smaller screens */
+    transform: translateY(-80%);
+    pointer-events: none;
+    padding: 3px; /* Adjust padding for smaller screens */
+    font-size: 17px; /* Adjust font size for smaller screens */
+    padding-left: 16px; /* Adjust padding for smaller screens */
+    
+    color: #999;
+    transition: top 0.3s, font-size 0.3s, color 0.3s;
+  }
+  
+  .input-field:focus {
+    border-color: #007bff;
+  }
+  
+  .input-field:not(:empty) + .input-label {
+    top: 0;
+    font-size: 19px; /* Adjust font size for smaller screens */
+    color: #007bff;
+  }
+  .UpdateBtn{
+width: 100%;
+  }
+  .ButtonsFun{
+  border-top: none !important;
+  }
