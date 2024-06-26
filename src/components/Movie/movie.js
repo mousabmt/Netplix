@@ -1,5 +1,4 @@
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
+
 import "./movie.scss";
 import React from "react";
 export default function MovieCard({ handleShow, movieData, setMovie }) {
@@ -21,7 +20,7 @@ export default function MovieCard({ handleShow, movieData, setMovie }) {
           <tbody className="movie-card ">
             <a onClick={handleClick} className="image-container">
               <img
-                src={`https://image.tmdb.org/t/p/w500/${movieData.Poster_Path}`}
+                src={ movieData.Poster_Path&&`https://image.tmdb.org/t/p/w500/${movieData.Poster_Path}` || `https://thumbs.dreamstime.com/b/movie-icon-film-flap-sticker-dark-background-movie-icon-film-flap-sticker-dark-background-simple-vector-icon-117431578.jpg`}
               />
               <div className="overlay">
                 <p>Rate : {Math.round(movieData.vote_average * 10) / 10}</p>

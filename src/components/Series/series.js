@@ -1,74 +1,62 @@
 import React from "react";
-import MovieShowDetails from "../ModalMovie/modalmovie";
-import { useState } from "react";
-import MovieCard from "../Movie/movie";
-import axios from "axios";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { CardGroup } from "react-bootstrap";
-import "./home.scss";
-import CarouselMovies from "../Carousel/carousel";
+import axios from "axios";
 import ColorSchemesExample from "../NavBar/navbar";
+import "./series.scss";
+import MovieShowDetails from "../ModalMovie/modalmovie";
+import MovieCard from "../Movie/movie";
+import CarouselSeries from "../Carousel/carouselSeries";
 import Pages from "../pages/pages";
-export default function Home() {
+// this is the favorite page cards listing 
+export default function Series(req, res) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [Series, setSeries] = useState([]);
+  const [OneSeries, setOneSeries] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(500);
-  const [Movies, setMovies] = useState([]);
-  const [OneMovie, setOneMovie] = useState([]);
-  // this is the home page cards listing
   const fetchData = async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_HOST}/${page}`);
-      setMovies(res.data.Movies);
+      const res = await axios.get(`${process.env.REACT_APP_HOST}/series/${page}`);
+      setSeries(res.data.Trending);
     } catch (err) {
       console.log(err);
     }
   };
-  useEffect(() => {
-    fetchData();
-  }, [page]);
   const changePage = (newPage) => {
     if (newPage > 0 && newPage <= totalPages) {
       setPage(newPage);
     }
   };
+  useEffect(() => {
+    fetchData();
+  }, [page]);
   return (
     <div>
       <ColorSchemesExample />
-
       {
-        Movies.length &&
-        <CarouselMovies movie={Movies} />
-
+        Series.length && 
+      <CarouselSeries series={Series} />
       }
       <h1 className="sign">Most Popular</h1>
       <div className="positions">
-
-
         <CardGroup>
-          {Movies.length &&
-            Movies.map((movie) => (
+          {Series.length &&
+            Series.map((series) => (
               <MovieCard
                 handleShow={handleShow}
-                movieData={movie}
-                setMovie={setOneMovie}
+                movieData={series}
+                setMovie={setOneSeries}
               />
             ))}
         </CardGroup>
-
       </div>
-      {
-        setOneMovie &&
-        <MovieShowDetails
-          show={show}
-          handleClose={handleClose}
-          Movie={OneMovie}
-          allMovies={Movies}
-
-        />
-      }
+      {setOneSeries && (
+        <MovieShowDetails show={show} handleClose={handleClose} Movie={OneSeries} />
+      )}
       <footer>
         <Pages page={page}
           totalPages={totalPages}
@@ -76,5 +64,6 @@ export default function Home() {
         />
       </footer>
     </div>
-  );
+
+  )
 }

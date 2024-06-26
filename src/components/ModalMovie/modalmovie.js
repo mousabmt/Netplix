@@ -1,11 +1,10 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import ".//modalmovies.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { useRef } from "react";
 
-function MovieShowDetails({ show, handleClose, Movie }) {
+function MovieShowDetails({ show, handleClose, Movie, Movies }) {
   const [comment, setComment] = useState("");
   const handleCommentChange = (event) => {
     setComment(event.target.value);
@@ -15,30 +14,15 @@ function MovieShowDetails({ show, handleClose, Movie }) {
     movie_title: Movie.Title,
     movie_release_date: Movie.Release_Date || "UnOffical yet",
     movie_poster_path: Movie.Poster_Path || "UnOffical yet",
-    movie_overview: Movie.Overview,
+    movie_overview: Movie.Overview!=""&&Movie.Overview || "No overview available Yet",
     movie_popularity: Movie.popularity || "Uncount Yet",
     movie_vote_count: Movie.vote_count || "No overview available Yet",
     vote_average: Movie.vote_average || "No overview available Yet",
     comment: comment || "No comment",
   };
-  console.log(Movie.ID);
-
-  // async function checkFav() {
-  //   const checking = await axios.get(
-  //     `${process.env.REACT_APP_HOST}/getmovies/${Movie.ID}`
-  //   );
-  // }
-  // console.log("THE MOVIE",Movie);
   const [variant, setVariant] = useState("primary");
   const [FavTxt, setFavTxt] = useState("Add To Favorite");
-  // const [Check, setCheck] = useState(true);
 
-  // async function checkFav(req, res) {
-
-  // }
-  // useEffect(() => {
-  //   checkFav();
-  // }, []);
   function setTimer() {
     setVariant("primary");
     setFavTxt("Add To Favorite");

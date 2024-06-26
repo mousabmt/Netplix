@@ -15,19 +15,18 @@ img{
 .movie-card {
     position: relative;
     cursor: pointer;
-  box-shadow: none;
     .image-container {
       position: relative;
       overflow: hidden;
       display: inline-block;
       text-decoration: none; 
-  
+  height: 300px;
+  width: 100%;
       img {
         max-width: 100%;
-        height: auto;
         display: block;
         transition: transform 0.3s ease;
-        
+        object-fit: cover;
       }
   
       .overlay {

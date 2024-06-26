@@ -2,7 +2,6 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "./navbar.scss";
-import Favorite from "../FavList/favlist";
 import { Link } from "react-router-dom";
 export default function ColorSchemesExample() {
   return (
@@ -17,8 +16,8 @@ export default function ColorSchemesExample() {
               </Link>
             </Nav.Link>
             <Nav.Link>
-              <Link to="/" className="nav-link">
-                Trending
+              <Link to="/series" className="nav-link">
+                Series
               </Link>
             </Nav.Link>
             <Nav.Link>

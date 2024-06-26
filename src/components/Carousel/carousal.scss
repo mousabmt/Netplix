@@ -1,91 +1,4 @@
 
-// body {
-//     margin: 0;
-//     padding: 0;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     height: 100vh;
-//     background-color: #f5f5f5;
-// }
-
-// .carousel-container {
-//     width: 300px;
-//     overflow: hidden;
-// }
-
-// .carousel {
-//     display: flex;
-//     animation: slide 10s infinite;
-// }
-
-// .carousel-item {
-//     flex: 0 0 100%;
-//     transition: transform 0.5s;
-// }
-
-// .carousel-item img {
-//     width: 100%;
-//     height: auto;
-// }
-
-// @keyframes slide {
-//     0%, 100% {
-//         transform: translateX(0);
-//     }
-//     33.33%, 66.66% {
-//         transform: translateX(-100%);
-//     }
-//     66.66%, 100% {
-//         transform: translateX(-200%);
-//     }
-// }
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  position: relative;
-}
-
-
-
-.slides {
-  display: grid;
-  > .slide {
-    grid-area: 1 / -1;
-  }
-
-  > button {
-    appearance: none;
-    background: transparent;
-    border: none;
-    color: white;
-    position: absolute;
-    font-size: 5rem;
-    width: 5rem;
-    height: 5rem;
-    top: 30%;
-    transition: opacity 0.3s;
-    opacity: 0.7;
-    z-index: 5;
-
-    &:hover {
-      opacity: 1;
-    }
-
-    &:focus {
-      outline: none;
-    }
-
-    &:first-child {
-      left: -50%;
-    }
-    &:last-child {
-      right: -50%;
-    }
-  }
-}
-
 // .slide {
 //   //transform-style: preserve-3d;
 //   // border: solid 1px red;
@@ -186,18 +99,12 @@
 //   }
 // }
 .carsoulControl{
-    width: 100%;
-    height: 50%;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 .carousel{
 
-    position: relative;
-        width: 30%;
+   position: relative;
+        width: 25%;
       
-}
-.carousel-control-prev-icon .carousel-control-prev-icon{
-  width: 90px;
 }

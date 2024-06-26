@@ -1,33 +1,17 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import ".//modalmovies.scss";
+import "./modalmovies.scss";
 import { useState } from "react";
 import axios from "axios";
-import { useEffect } from "react";
-import MovieFavCard from "../Movie/movieFav";
-import { Form } from "react-bootstrap";
-function MovieShowFavDetails({ show, handleClose, Movie,refereshPage}) {
-  // functions to change the button's Color&Text when pressed On
-  const [variant, setVariant] = useState("success");
-  const [FavTxt, setFavTxt] = useState("Add To Favorite");
+
+function MovieShowFavDetails({ show, handleClose, Movie, setCounter, Movies, setMovies }) {
   const [isupdate, setIsUpdate] = useState(true);
-  const [comment, setComment] = useState(``);
+  const [comment, setComment] = useState("");
+
   const handleCommentChange = (event) => {
     setComment(event.target.value);
   };
-  function setTimer() {
-    setVariant("success");
-    setFavTxt("Add To Favorite");
-  }
-  const changeButton = () => {
-    setVariant("danger");
-    setFavTxt("Already In Favorite");
-    setTimeout(setTimer, 1000);
-    setTimeout(handleCloseFun, 1200);
-  };
-  // const handleCommentEdit = (event) => {
-  //   setComment(event.target.value);
-  // };
+
   const obj = {
     movie_id: Movie.movie_id,
     movie_title: Movie.movie_title,
@@ -38,36 +22,40 @@ function MovieShowFavDetails({ show, handleClose, Movie,refereshPage}) {
     movie_vote_count: Movie.movie_vote_count || "Uncount Yet",
     comment: comment || "No comment",
   };
-  console.log(obj.comment);
-  // For Delete from favorite button
+
   const favoriteDeletion = () => {
+
     axios
       .delete(`${process.env.REACT_APP_HOST}/getmovies/${obj.movie_id}`, obj)
       .then((data) => {
-        console.log('id :',obj.movie_id , " Deleted  !");
-        refereshPage(obj.movie_id)
+        console.log('id :', obj.movie_id, " Deleted !");
       })
       .catch((err) => console.log(err));
-
-    handleCloseFun();
+    const newArray = Movies.filter(movie => movie.movie_id !== obj.movie_id)
+    setMovies(newArray)
+    setCounter(prev => prev + 1);
+    handleClose();
   };
+
   const updateComment = () => {
     setIsUpdate(false);
   };
+
   const handleCloseFun = () => {
     handleClose();
-    setComment('')
+    setComment('');
     setIsUpdate(true);
   };
 
-  const favCommentEdit=()=>{
+  const favCommentEdit = () => {
     axios
-    .put(`${process.env.REACT_APP_HOST}/getmovies/${obj.movie_id}`, obj)
-    .then((data) => {})
-    .catch((err) => console.log(err));
-
+      .put(`${process.env.REACT_APP_HOST}/getmovies/${obj.movie_id}`, obj)
+      .then((data) => {  setCounter(prev => prev + 1);})
+      .catch((err) => console.log(err));
+   
     setIsUpdate(true);
-  }
+  };
+
   return (
     <div>
       <Modal show={show} onHide={handleCloseFun}>
@@ -79,8 +67,7 @@ function MovieShowFavDetails({ show, handleClose, Movie,refereshPage}) {
           <article>{Movie.movie_overview}</article>
         </Modal.Body>
         <Modal.Footer className="rates">
-          <p>Release Date :{Movie.movie_release_date || "UnOfficial Yet"}</p>
-
+          <p>Release Date : {Movie.movie_release_date || "UnOfficial Yet"}</p>
           <p>Votes : {Movie.movie_vote_count || "UnOfficial Yet"}</p>
           <p>Popularity : {Movie.movie_popularity || "UnOfficial Yet"}</p>
         </Modal.Footer>
@@ -118,9 +105,6 @@ function MovieShowFavDetails({ show, handleClose, Movie,refereshPage}) {
         <Modal.Footer className="buttons">
           <Button variant="danger" onClick={favoriteDeletion}>
             Delete From Favorite
-          </Button>
-          <Button variant={variant} onClick={changeButton}>
-            {FavTxt}
           </Button>
         </Modal.Footer>
       </Modal>
