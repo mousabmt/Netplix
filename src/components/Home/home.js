@@ -20,7 +20,7 @@ export default function Home() {
   // this is the home page cards listing
   const fetchData = async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_HOST}/${page}`);
+      const res = await axios.get(`${process.env.REACT_APP_HOST}/home/${page}`);
       setMovies(res.data.Movies);
     } catch (err) {
       console.log(err);
