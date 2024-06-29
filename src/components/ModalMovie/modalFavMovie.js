@@ -33,7 +33,6 @@ function MovieShowFavDetails({ show, handleClose, Movie, setCounter, Movies, set
       .catch((err) => console.log(err));
     const newArray = Movies.filter(movie => movie.movie_id !== obj.movie_id)
     setMovies(newArray)
-    setCounter(prev => prev + 1);
     handleClose();
   };
 
