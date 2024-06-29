@@ -1,8 +1,4 @@
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import "./movie.scss";
-import { useEffect, useState } from "react";
-import MovieShowFavDetails from "../ModalMovie/modalFavMovie";
 export default function MovieFavCard({
   handleShow,
   movieData,
