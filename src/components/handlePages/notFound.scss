@@ -10,7 +10,7 @@
 	--primary-color: #faca2e;
 	--eye-pupil-color: #050505;
 	--bg-color: #fff;
-	--text-color: #000;
+	--text-color: #130f0f;
 	--fs-heading: 36px;
 	--fs-text: 26px;
 	--fs-button: 18px;
@@ -138,4 +138,7 @@
 	cursor: pointer;
 	color: var(--primary-color);
   border: 0;
+}
+.error-page__heading-title{
+	background-color:var(--bg-color);
 }
