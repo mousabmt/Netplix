@@ -2,7 +2,7 @@ import React from "react";
 import MovieShowFavDetails from "../ModalMovie/modalFavMovie";
 import { useState, useEffect } from "react";
 import MovieFavCard from "../Movie/movieFav";
-import { Row, CardGroup } from "react-bootstrap";
+import {  CardGroup } from "react-bootstrap";
 import axios from "axios";
 import ColorSchemesExample from "../NavBar/navbar";
 import "./movielist.scss";
