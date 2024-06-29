@@ -50,15 +50,15 @@ function MovieShowFavDetails({ show, handleClose, Movie, setCounter, Movies, set
   const favCommentEdit = () => {
     axios
       .put(`${process.env.REACT_APP_HOST}/getmovies/${obj.movie_id}`, obj)
-      .then((data) => {  setCounter(prev => prev + 1);})
+      .then((data) => { setCounter(prev => prev + 1); })
       .catch((err) => console.log(err));
-   
+
     setIsUpdate(true);
   };
 
   return (
-    <div>
-      <Modal show={show} onHide={handleCloseFun}>
+    <div id={obj.movie_id}>
+      <Modal show={show} onHide={handleCloseFun} >
         <Modal.Header closeButton>
           <Modal.Title>{Movie.movie_title}</Modal.Title>
         </Modal.Header>

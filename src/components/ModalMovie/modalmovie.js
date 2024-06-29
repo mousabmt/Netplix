@@ -59,7 +59,7 @@ function closingStuff(){
   handleClose()
 }
   return (
-    <div>
+    <div id={obj.movie_id}>
       <Modal show={show} onHide={closingStuff}>
         <Modal.Header closeButton>
           <Modal.Title>{Movie.Title}</Modal.Title>

@@ -1,3 +1,4 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 .Row{
     padding: 10px ;
  background-color: rgb(30, 29, 29);
@@ -32,3 +33,38 @@ h1{
    background-color: white;
 opacity: 0.6;
 }
+.Empty {
+   background-color: #f0f0f0; /* Light gray background */
+   color: #333; /* Dark gray text */
+   text-align: center; /* Center align text */
+   padding: 50px; /* Padding for spacing */
+   border-radius: 10px; /* Rounded corners */
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+   display: flex; /* Flexbox for centering content */
+   flex-direction: column; /* Vertical alignment */
+   align-items: center; /* Center align items */
+   justify-content: center; /* Center justify items */
+   max-width: 600px; /* Maximum width */
+   margin: 100px auto; /* Center div horizontally and add vertical space */
+ }
+ 
+ .Empty i {
+   font-size: 50px; /* Icon size */
+   margin-bottom: 20px; /* Space below the icon */
+   color: #888; /* Icon color */
+ }
+ 
+ .Empty p {
+   font-size: 20px; /* Text size */
+ }
+ .spinner-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh; /* Full viewport height to center vertically */
+ }
+ 
+ .spinner-border.text-secondary {
+   width: 120px;
+   height: 120px;
+ }

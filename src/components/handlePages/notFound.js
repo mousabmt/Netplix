@@ -18,7 +18,7 @@ return (
       <p class="error-page__heading-desciption">404 error</p>
     </div>
 
-    <a class="error-page__button" href="#" aria-label="back to home" title="back to home">back to home</a>
+    <a class="error-page__button" href="/" aria-label="back to home" title="back to home" >back to home</a>
   </div>
 </main>
 
