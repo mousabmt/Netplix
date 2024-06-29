@@ -6,7 +6,7 @@ import { Row, CardGroup } from "react-bootstrap";
 import axios from "axios";
 import ColorSchemesExample from "../NavBar/navbar";
 import "./movielist.scss";
-
+import { Spinner } from "react-bootstrap";
 // this is the favorite page cards listing 
 export default function Favorite() {
   const [show, setShow] = useState(false);
@@ -16,15 +16,17 @@ export default function Favorite() {
   const [Movies, setMovies] = useState([]);
   const [OneMovie, setOneMovie] = useState([]);
   const [count, setCounter] = useState(0)
+  const [fetch, setFetch] = useState(true)
 
-  
   const fetchData = async () => {
     try {
       const res = await axios.get(`${process.env.REACT_APP_HOST}/getmovies`);
       setMovies(res.data.movie);
       console.log(Movies);
+      setFetch(false)
     } catch (err) {
       console.log(err);
+
     }
   };
 
@@ -33,12 +35,21 @@ export default function Favorite() {
     fetchData();
   }, [count]);
 
-  return (
-    <div className="positions">
-      <ColorSchemesExample />
-      <CardGroup>
-        {Movies.length &&
-          Movies.map((movie) => (
+  return (<>
+    <ColorSchemesExample />
+    {fetch ? (
+      <div className="spinner-container">
+        <Spinner animation="border" variant="secondary" />
+      </div>
+    ) : Movies.length === 0 ? (
+      <div className="Empty">
+        <i className="fas fa-film"></i>
+        <p>You Don't Have Any Movie/Series Added Yet!</p>
+      </div>
+    ) : (
+      <div className="positions">
+        <CardGroup>
+          {Movies.map((movie) => (
             <MovieFavCard
               key={movie.id}
               handleShow={handleShow}
@@ -46,10 +57,8 @@ export default function Favorite() {
               setMovie={setOneMovie}
             />
           ))}
-      </CardGroup>
-      {
-        Movies && (
-
+        </CardGroup>
+        {Movies && (
           <MovieShowFavDetails
             show={show}
             handleClose={handleClose}
@@ -58,9 +67,12 @@ export default function Favorite() {
             Movies={Movies}
             setMovies={setMovies}
           />
-        )
-      }
+        )}
+      </div>
+    )}
 
-    </div>
+
+  </>
+
   );
 }

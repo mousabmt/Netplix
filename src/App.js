@@ -8,16 +8,16 @@ import Series from './components/Series/series';
 import Notfound from './components/handlePages/notFound';
 function App() {
   return (
-<div> 
-<Routes>
-<Route path='/' element={<Home/> }/> 
-<Route path='/favorite' element={<Favorite/> }/> 
-<Route path='/series' element={<Series/> }/> 
-<Route path='*' element={<Notfound/> }/> 
+    <div>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/favorite' element={<Favorite />} />
+        <Route path='/series' element={<Series />} />
+        <Route path='*' element={<Notfound />} />
 
-</Routes>
-</div>
-);
+      </Routes>
+    </div>
+  );
 }
 
 export default App;

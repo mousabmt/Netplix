@@ -1,13 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { CardGroup } from "react-bootstrap";
+import { CardGroup, Carousel } from "react-bootstrap";
 import axios from "axios";
 import ColorSchemesExample from "../NavBar/navbar";
 import "./series.scss";
 import MovieShowDetails from "../ModalMovie/modalmovie";
 import MovieCard from "../Movie/movie";
-import CarouselSeries from "../Carousel/carouselSeries";
 import Pages from "../pages/pages";
+import { Spinner } from "react-bootstrap";
+import CarouselMovies from "../Carousel/carousel";
 // this is the favorite page cards listing 
 export default function Series(req, res) {
   const [show, setShow] = useState(false);
@@ -18,10 +19,12 @@ export default function Series(req, res) {
   const [OneSeries, setOneSeries] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(500);
+  const [fetch, setFetch] = useState(true)
   const fetchData = async () => {
     try {
       const res = await axios.get(`${process.env.REACT_APP_HOST}/series/${page}`);
       setSeries(res.data.Trending);
+      setFetch(false);
     } catch (err) {
       console.log(err);
     }
@@ -35,35 +38,47 @@ export default function Series(req, res) {
     fetchData();
   }, [page]);
   return (
-    <div>
-      <ColorSchemesExample />
-      {
-        Series.length && 
-      <CarouselSeries series={Series} />
-      }
-      <h1 className="sign">Most Popular</h1>
-      <div className="positions">
-        <CardGroup>
-          {Series.length &&
-            Series.map((series) => (
-              <MovieCard
-                handleShow={handleShow}
-                movieData={series}
-                setMovie={setOneSeries}
-              />
-            ))}
-        </CardGroup>
-      </div>
-      {setOneSeries && (
-        <MovieShowDetails show={show} handleClose={handleClose} Movie={OneSeries} />
+    <>
+      {fetch ? (
+        <div className="spinner-container">
+          <Spinner animation="border" variant="secondary" />
+        </div>
+      ) : (
+        <div>
+          <ColorSchemesExample />
+          {Series.length && <CarouselMovies movie={Series} />}
+          <h1 className="sign" id="#top">Most Popular</h1>
+          <div className="positions">
+            <CardGroup>
+              {Series.length &&
+                Series.map((series) => (
+                  <MovieCard
+                    key={series.id}
+                    handleShow={handleShow}
+                    movieData={series}
+                    setMovie={setOneSeries}
+                  />
+                ))}
+            </CardGroup>
+          </div>
+          {OneSeries && (
+            <MovieShowDetails
+              show={show}
+              handleClose={handleClose}
+              Movie={OneSeries}
+            />
+          )}
+          <footer>
+            <Pages
+              page={page}
+              totalPages={totalPages}
+              changePage={changePage}
+            />
+          </footer>
+        </div>
       )}
-      <footer>
-        <Pages page={page}
-          totalPages={totalPages}
-          changePage={changePage}
-        />
-      </footer>
-    </div>
+    </>
+
 
   )
 }

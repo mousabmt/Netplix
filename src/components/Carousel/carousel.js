@@ -8,20 +8,17 @@ import {
 
 export default function CarouselMovies({movie}) {
   return (
-    <div className='carsoulControl'>
-
+    <div className="carouselControl">
     <MDBCarousel showControls showIndicators fade>
-      {
-        movie.slice(1,10).map((movie,i)=>(
-          <MDBCarouselItem
-          className='w-100 d-block'
+      {movie.slice(1, 10).map((movie, i) => (
+        <MDBCarouselItem
+          key={i}
+          className="w-100 d-block"
           itemId={i + 1}
           src={`https://image.tmdb.org/t/p/w500/${movie.Poster_Path}`}
-          alt='...'
-          >
-        </MDBCarouselItem>
-        ))
-      }
+          alt="..."
+        />
+      ))}
     </MDBCarousel>
   </div>
   );

@@ -7,48 +7,64 @@ export default function Pages({ page, totalPages, changePage }) {
         <Container>
             <nav aria-label="Page navigation example">
                 <ul className="pagination">
+                    {
+                        page != 1 && (
+                            <li class="page-item">
+                                <a class="page-link" href="#top" onClick={() => changePage(1)} aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+
+                                </a>
+                            </li>
+                        )
+
+                    }
                     {page === 1 ? (
                         <li className="page-item disabled">
-                            <a className="page-link">Previous</a>
+                            <a className="page-link" href="#top">Previous</a>
                         </li>
                     ) : (
                         <li className="page-item">
-                            <a className="page-link" onClick={() => changePage(page - 1)}>Previous</a>
+                            <a className="page-link" href="#top" onClick={() => changePage(page - 1)}>Previous</a>
                         </li>
                     )}
                     {
                         page !== 1 && (
 
                             <li className="page-item ">
-                                <a className="page-link" onClick={() => changePage(page - 1)}>{page - 1}</a>
+                                <a className="page-link" href="#top" onClick={() => changePage(page - 1)}>{page - 1}</a>
                             </li>
                         )
                     }
 
                     <li className="page-item active">
-                        <a className="page-link" onClick={() => changePage(page)}>{page}</a>
+                        <a className="page-link" href="#top" onClick={() => changePage(page)}>{page}</a>
                     </li>
-                    <li className="page-item">
-                        <a className="page-link" onClick={() => changePage(page + 1)}>{page + 1}</a>
-                    </li>
+                    {
+                        page !== 500 && (
+                            <li className="page-item">
+                                <a className="page-link" href="#top" onClick={() => changePage(page + 1)}>{page + 1}</a>
+                            </li>
+                        )
+
+                    }
                     {page === totalPages ? (
                         <li className="page-item disabled">
-                            <a className="page-link">Next</a>
+                            <a className="page-link" href="#top">Next</a>
                         </li>
                     ) : (
                         <li className="page-item">
-                            <a className="page-link" onClick={() => changePage(page + 1)}>Next</a>
+                            <a className="page-link" href="#top" onClick={() => changePage(page + 1)}>Next</a>
                         </li>
                     )}
                     {
-                        page!==totalPages&&( <li class="page-item">
-                            <a class="page-link" onClick={()=> changePage(500)} aria-label="Next">
-                              <span aria-hidden="true">&raquo;</span>
+                        page !== totalPages && (<li class="page-item">
+                            <a class="page-link" href="#top" onClick={() => changePage(500)} aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
                             </a>
-                          </li>)
+                        </li>)
                     }
                 </ul>
-                
+
             </nav>
         </Container>
 
