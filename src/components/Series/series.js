@@ -47,7 +47,7 @@ export default function Series(req, res) {
         <div>
           <ColorSchemesExample />
           {Series.length && <CarouselMovies movie={Series} />}
-          <h1 className="sign" id="#top">Most Popular</h1>
+          <h1 className="sign" id="top">Most Popular</h1>
           <div className="positions">
             <CardGroup>
               {Series.length &&
