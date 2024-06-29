@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { CardGroup, Carousel } from "react-bootstrap";
+import { CardGroup } from "react-bootstrap";
 import axios from "axios";
 import ColorSchemesExample from "../NavBar/navbar";
 import "./series.scss";
