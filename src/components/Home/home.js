@@ -19,12 +19,14 @@ export default function Home() {
   const [Movies, setMovies] = useState([]);
   const [OneMovie, setOneMovie] = useState([]);
   const [fetch, setFetch] = useState(true)
+  const [search,setSearch]=useState(true)
 
   // this is the home page cards listing
   const fetchData = async () => {
     try {
       const res = await axios.get(`${process.env.REACT_APP_HOST}/home/${page}`);
       setMovies(res.data.Movies);
+      console.log('ORIGINAL DATA',res.data.Movies);
       setFetch(false)
     } catch (err) {
       console.log(err);
@@ -47,8 +49,7 @@ export default function Home() {
       ) : (
         <div>
           <ColorSchemesExample />
-          {Movies.length && <CarouselMovies movie={Movies} />}
-          <h1 className="sign" id="top">Most Popular</h1>
+         <CarouselMovies movie={Movies} setSearch={setSearch} search={search} setMovies={setMovies}/>
           <div className="positions">
             <CardGroup>
               {Movies.length &&

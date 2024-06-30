@@ -26,3 +26,88 @@
       width: 60%; /* Wider on desktops */
     }
   }
+  /* Container */
+
+  .search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+  }
+  
+  .search-input {
+    width: 0;
+    padding: 10px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1em;
+    transition: width 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+    background-color: #222;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    transform: translateX(-50%);
+  }
+  
+  .search-icon {
+margin: auto;
+    color: #fff;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease;
+  }
+  
+  .search-container:hover .search-input {
+
+    width: 50%;
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+  
+  .search-container:hover .search-icon {
+    transform: translateX(310px);
+    opacity: 0;
+  }
+  
+  .positions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 30px;
+  }
+  
+  .card-group {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .card img {
+    max-width: 100%;
+    border-radius: 5px;
+  }
+  
+  .card h3 {
+    font-size: 1.2em;
+    color: #fff;
+  }
+  
+  .card p {
+    font-size: 0.9em;
+    color: #aaa;
+  }
