@@ -3,9 +3,11 @@ import Modal from "react-bootstrap/Modal";
 import ".//modalmovies.scss";
 import { useState } from "react";
 import axios from "axios";
-
+import Watchtrailer from "../Carousel/trailer";
 function MovieShowDetails({ show, handleClose, Movie, Movies }) {
   const [comment, setComment] = useState("");
+  const [trailer, setTrailer] = useState(false);
+
   const handleCommentChange = (event) => {
     setComment(event.target.value);
   };
@@ -14,7 +16,7 @@ function MovieShowDetails({ show, handleClose, Movie, Movies }) {
     movie_title: Movie.Title,
     movie_release_date: Movie.Release_Date || "UnOffical yet",
     movie_poster_path: Movie.Poster_Path || "UnOffical yet",
-    movie_overview: Movie.Overview!=""&&Movie.Overview || "No overview available Yet",
+    movie_overview: Movie.Overview != "" && Movie.Overview || "No overview available Yet",
     movie_popularity: Movie.popularity || "Uncount Yet",
     movie_vote_count: Movie.vote_count || "No overview available Yet",
     vote_average: Movie.vote_average || "No overview available Yet",
@@ -32,7 +34,7 @@ function MovieShowDetails({ show, handleClose, Movie, Movies }) {
     const checking = await axios.get(
       `${process.env.REACT_APP_HOST}/getmovies/${Movie.ID}`
     );
-    console.log(checking,'sdfdsfds');
+    console.log(checking, 'sdfdsfds');
     if (checking.data.length) {
       setVariant("danger");
       setFavTxt("The Movie Is Already In Favorite!");
@@ -43,7 +45,7 @@ function MovieShowDetails({ show, handleClose, Movie, Movies }) {
     } else {
       axios
         .post(`${process.env.REACT_APP_HOST}/addMovie`, obj)
-        .then((data) => {})
+        .then((data) => { })
         .catch((err) => console.log(err));
       setVariant("success");
       setFavTxt("Successfully Added To Favorite");
@@ -53,11 +55,16 @@ function MovieShowDetails({ show, handleClose, Movie, Movies }) {
     }
   };
   // to close after entering the comment
+  function closingStuff() {
+    setTrailer(false)
 
-function closingStuff(){
-  setComment('')
-  handleClose()
-}
+    setComment('')
+    handleClose()
+  }
+  const handleShowTrailer = () => {
+
+    setTrailer(true)
+  }
   return (
     <div id={obj.movie_id}>
       <Modal show={show} onHide={closingStuff}>
@@ -68,22 +75,17 @@ function closingStuff(){
         <Modal.Body>
           <article>{Movie.Overview}</article>
         </Modal.Body>
+
         <div className="ratesNcomments">
           <Modal.Footer className="rates">
-            <Modal.Footer>
-              Release Date :{Movie.Release_Date || "UnOfficial Yet"}
-            </Modal.Footer>
-
-            <Modal.Footer>
-              Votes : {Movie.vote_count || "UnOfficial Yet"}
-            </Modal.Footer>
-            <Modal.Footer>
-              Popularity : {Movie.popularity || "UnOfficial Yet"}
-            </Modal.Footer>
+            <p>Release Date: {Movie.Release_Date || "UnOfficial Yet"}</p>
+            <p>Votes: {Movie.vote_count || "UnOfficial Yet"}</p>
+            <p>Popularity: {Movie.popularity || "UnOfficial Yet"}</p>
           </Modal.Footer>
+
           <form>
             <div className="input-container">
-              <textarea
+              <input
                 type="text"
                 id="commentInput"
                 className="input-field"
@@ -94,14 +96,25 @@ function closingStuff(){
                 Your Comment
               </label>
             </div>
+            <Modal.Footer className="ButtonsFun">
+              <Button variant={variant} onClick={addToFav} type="button" className="UpdateBtn">
+                {FavTxt}
+              </Button>
+            </Modal.Footer>
             <Modal.Footer className="buttons">
               <Button variant="secondary" onClick={handleClose}>
                 Exit
               </Button>
-              { 
-                <Button variant={variant} onClick={addToFav} type="button">
-                  {FavTxt}
-                </Button>
+
+              <Button
+                variant="primary"
+                onClick={handleShowTrailer}
+                style={{ width: '50%' }}
+              >
+                Watch Trailer
+              </Button>
+              {
+                trailer && <Watchtrailer linkProvied={Movie.Title} />
               }
             </Modal.Footer>
           </form>

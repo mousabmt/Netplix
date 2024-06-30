@@ -39,7 +39,7 @@ export default function Series(req, res) {
     fetchData();
   }, [page]);
   return (
-    <>
+    <div>
       {fetch ? (
         <div className="spinner-container">
           <Spinner animation="border" variant="secondary" />
@@ -77,7 +77,7 @@ export default function Series(req, res) {
           </footer>
         </div>
       )}
-    </>
+    </div>
 
 
   )

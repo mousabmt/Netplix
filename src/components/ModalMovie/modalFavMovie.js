@@ -3,10 +3,11 @@ import Modal from "react-bootstrap/Modal";
 import "./modalmovies.scss";
 import { useState } from "react";
 import axios from "axios";
-
+import Watchtrailer from "../Carousel/trailer";
 function MovieShowFavDetails({ show, handleClose, Movie, setCounter, Movies, setMovies }) {
   const [isupdate, setIsUpdate] = useState(true);
   const [comment, setComment] = useState("");
+  const [trailer, setTrailer] = useState(false);
 
   const handleCommentChange = (event) => {
     setComment(event.target.value);
@@ -44,6 +45,7 @@ function MovieShowFavDetails({ show, handleClose, Movie, setCounter, Movies, set
     handleClose();
     setComment('');
     setIsUpdate(true);
+    setTrailer(false)
   };
 
   const favCommentEdit = () => {
@@ -54,10 +56,13 @@ function MovieShowFavDetails({ show, handleClose, Movie, setCounter, Movies, set
 
     setIsUpdate(true);
   };
-
+  const handleShowTrailer = () => {
+    console.log('entered Show trailer '+Movie.movie_title);
+    setTrailer(true)
+  }
   return (
     <div id={obj.movie_id}>
-      <Modal show={show} onHide={handleCloseFun} >
+      <Modal show={show} onHide={handleCloseFun}>
         <Modal.Header closeButton>
           <Modal.Title>{Movie.movie_title}</Modal.Title>
         </Modal.Header>
@@ -65,17 +70,20 @@ function MovieShowFavDetails({ show, handleClose, Movie, setCounter, Movies, set
         <Modal.Body>
           <article>{Movie.movie_overview}</article>
         </Modal.Body>
+
         <Modal.Footer className="rates">
-          <p>Release Date : {Movie.movie_release_date || "UnOfficial Yet"}</p>
-          <p>Votes : {Movie.movie_vote_count || "UnOfficial Yet"}</p>
-          <p>Popularity : {Movie.movie_popularity || "UnOfficial Yet"}</p>
+          <p>Release Date: {Movie.movie_release_date || "UnOfficial Yet"}</p>
+          <p>Votes: {Movie.movie_vote_count || "UnOfficial Yet"}</p>
+          <p>Popularity: {Movie.movie_popularity || "UnOfficial Yet"}</p>
         </Modal.Footer>
 
-        {isupdate && <Modal.Footer className="rates">Your Comment : {Movie.comment}</Modal.Footer>}
+        {isupdate && (
+          <Modal.Footer className="rates">Your Comment: {Movie.comment}</Modal.Footer>
+        )}
         {!isupdate && (
           <form>
             <div className="input-container">
-              <textarea
+              <input
                 type="text"
                 id="commentInput"
                 className="input-field"
@@ -88,26 +96,39 @@ function MovieShowFavDetails({ show, handleClose, Movie, setCounter, Movies, set
             </div>
           </form>
         )}
+
         <Modal.Footer className="ButtonsFun">
-          {isupdate && (
-            <Button className="UpdateBtn" onClick={updateComment}>
+          {isupdate ? (
+            <Button className="UpdateBtn" onClick={updateComment} block>
               Update Comment
             </Button>
-          )}
-          {!isupdate && (
-            <Button className="UpdateBtn" onClick={favCommentEdit}>
-              SaveChanges
+          ) : (
+            <Button className="UpdateBtn" onClick={favCommentEdit} block>
+              Save Changes
             </Button>
           )}
         </Modal.Footer>
 
         <Modal.Footer className="buttons">
-          <Button variant="danger" onClick={favoriteDeletion}>
+          <Button variant="danger" onClick={favoriteDeletion} style={{ width: '50%' }}>
             Delete From Favorite
           </Button>
+
+          <Button
+            variant="primary"
+            onClick={handleShowTrailer}
+            style={{ width: '50%' }}
+          >
+            Watch Trailer
+          </Button>
+          {
+            trailer && <Watchtrailer linkProvied={Movie.Title} />
+          }
         </Modal.Footer>
       </Modal>
     </div>
+
+
   );
 }
 
