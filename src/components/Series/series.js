@@ -20,6 +20,7 @@ export default function Series(req, res) {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(500);
   const [fetch, setFetch] = useState(true)
+  const [search,setSearch]=useState(true)
   const fetchData = async () => {
     try {
       const res = await axios.get(`${process.env.REACT_APP_HOST}/series/${page}`);
@@ -46,8 +47,7 @@ export default function Series(req, res) {
       ) : (
         <div>
           <ColorSchemesExample />
-          {Series.length && <CarouselMovies movie={Series} />}
-          <h1 className="sign" id="top">Most Popular</h1>
+          <CarouselMovies movie={Series} setSearch={setSearch} search={search} setMovies={setSeries}/>
           <div className="positions">
             <CardGroup>
               {Series.length &&

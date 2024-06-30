@@ -8,7 +8,8 @@ export default function ColorSchemesExample() {
     <>
       <Navbar bg="dark" data-bs-theme="dark" className="navBar">
         <Container>
-          <Navbar.Brand path="/">NetPlix</Navbar.Brand>
+          
+          <Navbar.Brand path="/" to="/">NetPlix</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link>
               <Link to="/" className="nav-link">

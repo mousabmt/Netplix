@@ -5,9 +5,7 @@ export default function MovieCard({ handleShow, movieData, setMovie }) {
   const handleClick = () => {
     setMovie(movieData);
     handleShow();
-    console.log(setMovie.length)
   };
-
   return (
     <div className="movieCards " key={movieData.ID}>
       <>
