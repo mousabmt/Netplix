@@ -24,7 +24,7 @@ function MovieShowDetails({ show, handleClose, Movie, Movies }) {
   };
   const [variant, setVariant] = useState("primary");
   const [FavTxt, setFavTxt] = useState("Add To Favorite");
-
+const [isActive ,setIsActive]=useState(true)
   function setTimer() {
     setVariant("primary");
     setFavTxt("Add To Favorite");
@@ -111,10 +111,10 @@ function MovieShowDetails({ show, handleClose, Movie, Movies }) {
                 onClick={handleShowTrailer}
                 style={{ width: '50%' }}
               >
-                Watch Trailer
+              Watch trailer
               </Button>
               {
-                trailer && <Watchtrailer linkProvied={Movie.Title} />
+                trailer && <Watchtrailer linkProvied={Movie.Title} setIsActive={setIsActive}/>
               }
             </Modal.Footer>
           </form>
