@@ -65,6 +65,7 @@ const [isActive ,setIsActive]=useState(true)
 
     setTrailer(true)
   }
+
   return (
     <div id={obj.movie_id}>
       <Modal show={show} onHide={closingStuff}>
@@ -84,14 +85,15 @@ const [isActive ,setIsActive]=useState(true)
           </Modal.Footer>
 
           <form>
-            <div className="input-container">
-              <input
-                type="text"
-                id="commentInput"
-                className="input-field"
-                value={comment}
-                onChange={handleCommentChange}
-              />
+          <div class="input-container">
+    <input
+      type="text"
+      id="commentInput"
+      class="input-field"
+      value={comment}
+      onChange={handleCommentChange}
+      placeholder=" " 
+    />
               <label htmlFor="commentInput" className="input-label">
                 Your Comment
               </label>
