@@ -22,7 +22,7 @@ export default function CarouselMovies({movie,setSearch,search , setMovies}) {
   };
   const searchBar = async (e) => {
 setSearch(false)
-const fetchSearch=await axios.get(`${process.env.REACT_APP_HOST}/movies/${searchQuery}/1`);
+const fetchSearch=await axios.get(`${process.env.REACT_APP_HOST}/movies/${searchQuery}/8`);
 setMovies(fetchSearch.data.results)
 console.log('SEARCH DATA',fetchSearch,data.results);
   };

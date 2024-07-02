@@ -4,6 +4,7 @@ import "./modalmovies.scss";
 import { useState } from "react";
 import axios from "axios";
 import Watchtrailer from "../Carousel/trailer";
+import { useEffect } from "react";
 function MovieShowFavDetails({ show, handleClose, Movie, setCounter, Movies, setMovies }) {
   const [isupdate, setIsUpdate] = useState(true);
   const [comment, setComment] = useState("");
@@ -51,15 +52,17 @@ function MovieShowFavDetails({ show, handleClose, Movie, setCounter, Movies, set
   const favCommentEdit = () => {
     axios
       .put(`${process.env.REACT_APP_HOST}/getmovies/${obj.movie_id}`, obj)
-      .then((data) => { setCounter(prev => prev + 1); })
+      .then(() => {  })
       .catch((err) => console.log(err));
 
     setIsUpdate(true);
+    Movie.comment=comment
   };
   const handleShowTrailer = () => {
     console.log('entered Show trailer '+Movie.movie_title);
     setTrailer(true)
   }
+
   return (
     <div id={obj.movie_id}>
       <Modal show={show} onHide={handleCloseFun}>

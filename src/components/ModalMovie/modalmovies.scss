@@ -46,17 +46,16 @@
   border-bottom-left-radius: var(--bs-modal-inner-border-radius);
 
 }
-/* Styles for input fields with floating label effect */
 .input-container {
   position: relative;
-  margin: 15px; /* Adjust margin for smaller screens */
+  margin: 15px;
   height: 90px;
   display: flex;
 }
 
 .input-field {
   width: 100%;
-  padding: 8px; /* Adjust padding for smaller screens */
+  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
@@ -64,22 +63,18 @@
 .input-label {
   position: absolute;
   top: 50%;
-  left: 8px; /* Adjust left spacing for smaller screens */
+  left: 8px;
   transform: translateY(-80%);
   pointer-events: none;
-  padding: 3px; /* Adjust padding for smaller screens */
-  font-size: 17px; /* Adjust font size for smaller screens */
-  padding-left: 16px; /* Adjust padding for smaller screens */
+  font-size: 17px;
+  padding-left: 16px;
   color: #999;
   transition: top 0.3s, font-size 0.3s, color 0.3s;
 }
 
-.input-field:focus {
-  border-color: #007bff;
-}
-
-.input-field:not(:empty) + .input-label {
+.input-field:focus + .input-label,
+.input-field:not(:placeholder-shown) + .input-label {
   top: 0;
-  font-size: 19px; /* Adjust font size for smaller screens */
+  font-size: 19px;
   color: #007bff;
 }
