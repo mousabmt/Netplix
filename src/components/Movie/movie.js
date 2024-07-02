@@ -7,7 +7,7 @@ export default function MovieCard({ handleShow, movieData, setMovie }) {
     handleShow();
   };
   return (
-    <div className="movieCards " key={movieData.ID}>
+    <div className="movieCards " id={movieData.ID}>
       <>
         <table className="custom-carousel cardsMovies">
           <span>
